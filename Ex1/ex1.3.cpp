@@ -3,6 +3,9 @@
 
 class Retangulo{
     public:
+    Retangulo(){};
+    ~Retangulo(){};
+
     void setH(float _h){
         h = _h;
     }
