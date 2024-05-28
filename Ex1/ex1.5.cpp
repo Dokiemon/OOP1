@@ -5,6 +5,9 @@ using namespace std;
 
 class Funcionario{
     public:
+    Funcionario(){};
+    ~Funcionario(){};
+
     void setSal(float _sal){
         sal = _sal;
     }
