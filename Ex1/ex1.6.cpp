@@ -12,29 +12,47 @@ class Funcionario{
         sal = _sal;
     }
 
-    void setMatricula(float _mat){
-        matricula = _mat;
-    }
-
-    void setNome(string _nome){
-        nome = _nome;
-    }
-
     float getAno(){
         ano = sal*12;
-    }
-
-    void exibir(){
-        std::cout << "Nome: " << nome << std::endl;
-        std::cout << "Salario: " << sal << std::endl;
-        std::cout << "Salario anual: " << ano << std::endl;
+        return ano;
     }
 
     private:
-    string nome;
     float sal;
     float ano;
-    int matricula;
+};
+
+class Admin{
+    public:
+    void setSal(float _sal){
+        sal = _sal;
+    }
+
+    float bonusN(){
+        aumento = sal * 0.15;
+        sal = sal + aumento;
+        return sal;
+    }
+
+    private:
+    float sal;
+    float aumento;
+};
+
+class Tecn{
+    public:
+    void setSal(float _sal){
+        sal = _sal;
+    }
+    float aumentof(){
+        aumento = sal * 0.15;
+        sal = sal + aumento;
+        return sal;
+    } 
+
+    private:
+    float sal;
+    float aumento;
 };
 
 int main(){
@@ -46,17 +64,10 @@ int main(){
     string c;
     float ano;
     int matricula;
-
-    std::cout << "Digite t para tecnico ou a para administrativo: " << std::endl;
-    std::cin >> c;
-
-    if (c == "t"){
-
-    }
+    string turno;
 
     std::cout << "Digite seu nome " << std::endl;
     std::cin >> nome;
-    user.setNome(nome);
 
     std::cout << "Digite seu salario " << std::endl;
     std::cin >> sal;
@@ -64,7 +75,34 @@ int main(){
 
     std::cout << "Digite sua matricula " << std::endl;
     std::cin >> matricula;
-    user.setMatricula(matricula);
 
-    user.exibir();
+    std::cout << "Digite t para tecnico ou a para administrativo: " << std::endl;
+    std::cin >> c;
+
+    if (c == "a"){
+        Admin ad;
+
+        ad.setSal(sal);
+        c = "Assistente Administrativo";
+        std::cout << "Digite o turno com d para diurno e n para noturno: " << std::endl;
+        std:: cin >> turno;
+        if (turno == "d"){
+            std::cout << "";
+        }
+        if (turno == "n"){
+            sal = ad.bonusN();
+        }
+    }
+    if (c == "t"){
+        c = "Assistente Tecnico";
+        Tecn tec;
+        tec.setSal(sal);
+        sal = tec.aumentof();
+    }
+    std::cout << "Nome: " << nome << std::endl << "Matricula: " << matricula << std::endl;
+    std::cout << "Cargo: " << c << std::endl << "Salario: " << sal << std::endl;
+    if (c == "Assistente Administrativo"){
+        std::cout << "Turno: " << turno << endl;
+    }
+    
 }
